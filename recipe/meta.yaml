@@ -1,4 +1,4 @@
-{% set version = "3.3.2" %}
+{% set version = "3.3.3" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,7 +11,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rpact_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rpact/rpact_{{ version }}.tar.gz
-  sha256: c564aaf23b3350f3bfcc7d2c12b4ee43f398202921fe6a57c78bfd90b319feba
+  sha256: 78f9dff5884ed1a490343913ae99ae9dbb29887546843350650eba6b993ea485
 
 build:
   merge_build_host: true  # [win]
