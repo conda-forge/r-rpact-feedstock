@@ -1,5 +1,4 @@
-{% set version = "3.3.2" %}
-
+{% set version = "3.3.4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,40 +10,40 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rpact_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rpact/rpact_{{ version }}.tar.gz
-  sha256: c564aaf23b3350f3bfcc7d2c12b4ee43f398202921fe6a57c78bfd90b319feba
+  sha256: 3de77ca528c3ae206f634e1ca7f6fed4f34363c7dc906410021aefab63ca1520
 
 build:
   merge_build_host: true  # [win]
   number: 0
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [not win]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}  # [not win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-    - {{ posix }}filesystem  # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ posix }}filesystem        # [win]
     - {{ posix }}make
-    - {{ posix }}sed  # [win]
-    - {{ posix }}coreutils  # [win]
-    - {{ posix }}zip  # [win]
-
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-rcpp >=1.0.0
-
+    - r-rcpp >=1.0.3
+    - r-rlang
   run:
     - r-base
-    - {{ native }}gcc-libs  # [win]
-    - r-rcpp >=1.0.0
+    - {{ native }}gcc-libs         # [win]
+    - r-rcpp >=1.0.3
+    - r-rlang
 
 test:
   commands:
-    - $R -e "library('rpact')"  # [not win]
+    - $R -e "library('rpact')"           # [not win]
     - "\"%R%\" -e \"library('rpact')\""  # [win]
 
 about:
@@ -63,7 +62,6 @@ extra:
     - thewchan
 
 # The original CRAN metadata for this package was:
-
 # Package: rpact
 # Title: Confirmatory Adaptive Clinical Trial Design and Analysis
 # Version: 3.3.1
@@ -90,7 +88,6 @@ extra:
 # Maintainer: Friedrich Pahlke <friedrich.pahlke@rpact.com>
 # Repository: CRAN
 # Date/Publication: 2022-08-24 10:50:02 UTC
-
 # See
 # https://docs.conda.io/projects/conda-build for
 # more information about meta.yaml
