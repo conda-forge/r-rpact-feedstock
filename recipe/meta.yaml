@@ -35,14 +35,16 @@ requirements:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-knitr >=1.19
+    - r-r6 >=2.5.1
     - r-rcpp >=1.0.3
+    - r-knitr >=1.19
     - r-rlang
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-knitr >=1.19
+    - r-r6 >=2.5.1
     - r-rcpp >=1.0.3
+    - r-knitr >=1.19
     - r-rlang
 
 test:
