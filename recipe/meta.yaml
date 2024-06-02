@@ -1,4 +1,4 @@
-{% set version = "3.5.1" %}
+{% set version = "4.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rpact_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rpact/rpact_{{ version }}.tar.gz
-  sha256: 02f6c8f0f10ed895099f3ea6ecf66a56ba49bcfa2db424fbc74272386387c23a
+  sha256: ecd9e5af98b16f71c0b6511080eafea57f94fe87018038b087519f907cf19ad7
 
 build:
   merge_build_host: true  # [win]
@@ -22,7 +22,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -33,14 +35,16 @@ requirements:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-knitr >=1.19
+    - r-r6 >=2.5.1
     - r-rcpp >=1.0.3
+    - r-knitr >=1.19
     - r-rlang
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-knitr >=1.19
+    - r-r6 >=2.5.1
     - r-rcpp >=1.0.3
+    - r-knitr >=1.19
     - r-rlang
 
 test:
