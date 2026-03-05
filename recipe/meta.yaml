@@ -1,4 +1,4 @@
-{% set version = "4.3.0" %}
+{% set version = "4.4.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rpact_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rpact/rpact_{{ version }}.tar.gz
-  sha256: 97eb21adeac056296ed7d635589b50163abf2dfca028431896fb858988b78768
+  sha256: 740a8db9d8d388038bfda147e07453a993062be70ddae17f4655e75bc39a199d
 
 build:
   number: 0
@@ -56,8 +56,8 @@ about:
   dev_url: https://github.com/rpact-com/rpact
   doc_url: https://www.rpact.org/
   license: LGPL-3.0-only
-  summary: Design and analysis of confirmatory adaptive clinical trials with continuous, binary, and survival endpoints according to the methods described in the monograph by Wassmer and Brannath (2016) <doi:10.1007/978-3-319-32562-0>. This includes classical group sequential as well as multi-stage adaptive hypotheses tests
-    that are based on the combination testing principle.
+  summary: Design and analysis of confirmatory adaptive clinical trials with continuous, binary, and survival endpoints according to the methods described in the monograph by Wassmer and Brannath (2016) <doi:10.1007/978-3-319-32562-0>. This includes classical group sequential as well as multi-stage adaptive hypotheses 
+    tests that are based on the combination testing principle.
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3
 
