@@ -1,4 +1,4 @@
-{% set version = "4.4.0" %}
+{% set version = "5.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rpact_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rpact/rpact_{{ version }}.tar.gz
-  sha256: 740a8db9d8d388038bfda147e07453a993062be70ddae17f4655e75bc39a199d
+  sha256: d11f50b0594a98e28fa2b5ec38499fc58ad0ca42e6c70d652e4b38a37befd891
 
 build:
   number: 0
